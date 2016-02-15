@@ -5,24 +5,6 @@ const Game = require('../lib/game');
 
 describe('Snake', function() {
   context('with default attributes', function() {
-    var snake = new Snake({});
-    it('should assign an x coordinate', function() {
-      assert.equal(snake.x, 0);
-    });
-    it('should assign a y coordinate', function() {
-      assert.equal(snake.y, 0);
-    });
-    it('should assign a height', function(){
-      assert.equal(snake.height, 10);
-    });
-    it('should assign a width', function(){
-      assert.equal(snake.width, 10);
-    });
-  });
-});
-
-describe('Snake#direction', function() {
-  context('successfully sets direction variable', function(){
     beforeEach(function() {
       this.snake = new Snake({x: 0,
                               y: 0,
@@ -30,10 +12,45 @@ describe('Snake#direction', function() {
                               height: 10})
     });
 
+    it('should assign an x coordinate', function() {
+      assert.equal(this.snake.x, 0);
+    });
+    it('should assign a y coordinate', function() {
+      assert.equal(this.snake.y, 0);
+    });
+    it('should assign a height', function(){
+      assert.equal(this.snake.height, 10);
+    });
+    it('should assign a width', function(){
+      assert.equal(this.snake.width, 10);
+    });
+  });
+});
+
+describe('Snake#direction', function() {
+  context('successfully sets direction variable', function(){
+    beforeEach(function() {
+      if (this.nextSnake === null) {
+      this.snake1 = new Snake({x: 0,
+                              y: 0,
+                              width: 10,
+                              height: 10,
+                              time: time,
+                              nextSnake: null})
+      } else if (this.nextSnake){
+      this.snake2 = new Snake({x: 0,
+                              y: 0,
+                              width: 10,
+                              height: 10,
+                              time: time,
+                              nextSnake: null})
+      }
+    });
+
     it('as up', function(){
-      assert.equal(this.snake.y, 0)
+      assert.equal(this.snake1.y, 0)
       this.snake.changeDirectionUp();
-      assert.equal(this.snake.direction, 'up')
+      assert.equal(this.snake1.direction, 'up')
     });
 
     it('as down', function() {
